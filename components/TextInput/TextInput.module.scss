@@ -1,0 +1,33 @@
+.input {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #fff;
+	width: 100%;
+	margin-bottom: 2rem;
+	font-size: 16px;
+	padding: 3px;
+	color: white;
+	outline: none;
+	-moz-outline: none;
+}
+
+.label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: white;
+	transition: all 0.3s ease;
+	pointer-events: none;
+}
+.input:valid ~ label,
+.input:focus ~ label {
+	top: -20px;
+	left: 0;
+	color: #03e9f4;
+	font-size: 16px;
+	outline: none;
+}
+
+.error {
+	color: #bc13fe;
+}

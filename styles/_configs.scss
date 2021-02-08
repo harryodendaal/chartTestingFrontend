@@ -1,0 +1,32 @@
+@mixin make-span(
+	$number,
+	$angle,
+	$zero-val,
+	$neg-value,
+	$width,
+	$height,
+	$anime,
+	$delay
+) {
+	span:nth-child(#{$number}) {
+		background: linear-gradient(#{$angle}, transparent, #03e9f4);
+		#{$zero-val}: 0;
+		#{$neg-value}: -100%;
+		width: #{$width};
+		height: #{$height};
+		animation: ($time) (#{$anime}) linear infinite;
+		animation-delay: #{$delay};
+	}
+}
+
+@mixin keyframe-replace($direction, $element) {
+	@keyframes #{$element} {
+		0% {
+			#{$direction}: -100%;
+		}
+		50%,
+		100% {
+			#{$direction}: 100%;
+		}
+	}
+}
