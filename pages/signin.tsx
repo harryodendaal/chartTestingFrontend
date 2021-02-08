@@ -37,6 +37,8 @@ const signin: React.FC<signinProps> = ({}) => {
 							axiosInstance.defaults.headers["Authorization"] =
 								"JWT " + localStorage.getItem("access_token");
 
+							// set user email in localstorage aswell
+							localStorage.setItem("user", data.email);
 							router.push("/");
 						});
 				}}
