@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import { SidebarData } from "./NavbarData";
+import { IconContext } from "react-icons";
 import { useRouter } from "next/router";
 import useCheckSignedHaveIn from "../../hooks/useCheckHaveSignedIn";
 import axiosInstance from "../../api/api";
-
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+	const [sidebar, setSidebar] = useState(false);
 	const router = useRouter();
 	const [email, setEmail] = useState<string | null>();
+
+	const showSidebar = () => {
+		setSidebar(!sidebar);
+	};
 
 	useEffect(() => {
 		const [email] = useCheckSignedHaveIn();
@@ -33,30 +41,38 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
 	return (
 		<>
-			<nav className={styles.navbar}>
-				<div className={styles.brand_title}>Chart Testing</div>
-				<a href="#" className={styles.toggle_button}>
-					<span className={styles.bar}></span>
-					<span className={styles.bar}></span>
-					<span className={styles.bar}></span>
-				</a>
-				<div className={styles.navbar_links}>
-					<ul>
-						<li>
-							<a href="#">Trading</a>
-						</li>
-						<li>
-							<a href="#">Testing</a>
-						</li>
-						<li>
-							<a href="#">Contact</a>
-						</li>
-						<button className={styles.button} onClick={logout}>
-							Logout
-						</button>
-					</ul>
+			<IconContext.Provider value={{ color: "#fff" }}>
+				<div className={styles.navbar}>
+					<a href="#" className={styles.menu_bars}>
+						<FaBars onClick={showSidebar} />
+					</a>
+					<h3>Hello {email}</h3>
 				</div>
-			</nav>
+				<nav className={sidebar ? styles.nav_menu_active : styles.nav_menu}>
+					<ul className={styles.nav_menu_items}>
+						<li className={styles.navbar_toggle}>
+							<a href="#" className={styles.menu_bars}>
+								<AiOutlineClose onClick={showSidebar} />
+							</a>
+						</li>
+						{SidebarData.map((item, index) => {
+							return (
+								<li key={index} className={styles.nav_text}>
+									<a href={item.path}>
+										{item.icon}
+										<span>{item.title}</span>
+									</a>
+								</li>
+							);
+						})}
+						<li className={styles.nav_text}>
+							<a>
+								<span>LOGOUT</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</IconContext.Provider>
 		</>
 	);
 };
