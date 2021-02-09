@@ -8,5 +8,24 @@
 body {
 	width: 100%;
 	height: 100vh;
+	/* display: flex;
+	align-items: center;
+	justify-content: center; */
 	background: linear-gradient(#141e30, #243b55);
+}
+
+body::-webkit-scrollbar {
+	width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+	background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #6649b8;
+}
+
+a {
+	overflow: hidden;
 }
