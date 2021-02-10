@@ -10,14 +10,15 @@ $time: 2s;
 	align-items: center;
 	justify-content: center;
 	display: flex;
-	padding-top: 200px;
 	overflow: hidden;
+	height: 100vh;
+	width: 100%;
 }
 .outerParent {
 	width: 400px;
 	padding: 40px;
-	background: rgba(0, 0, 0, 0.5);
-	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.8);
+	box-shadow: 3px 3px 5px 6px rgba(161, 23, 242, 0.6);
 	border-radius: 10px;
 
 	h2 {
@@ -69,16 +70,26 @@ $time: 2s;
 			($time * 3/4)
 		);
 	}
-
 	a:hover {
-		background: #03e9f4;
+		background: #a117f2;
 		color: #fff;
 		border-radius: 5px;
-		box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
-			0 0 100px #03e9f4;
+		box-shadow: 0 0 5px #a117f2, 0 0 25px #a117f2, 0 0 50px #a117f2,
+			0 0 100px #a117f2;
 	}
+	// a:hover {
+	// 	background: #03e9f4;
+	// 	color: #fff;
+	// 	border-radius: 5px;
+	// 	box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+	// 		0 0 100px #03e9f4;
+	// }
 }
-
+.divider {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
 @include keyframe-replace(left, span1);
 @include keyframe-replace(top, span2);
 @include keyframe-replace(right, span3);

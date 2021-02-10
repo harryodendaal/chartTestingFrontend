@@ -1,11 +1,12 @@
-import React from "react";
-import styles from "../styles/signin.module.scss";
+import React, { useEffect } from "react";
+import styles from "../styles/form/form.module.scss";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextInput from "../components/TextInput/TextInput";
-import axiosInstance from "../api/api";
+import axiosInstance from "../api/axios";
 import { useRouter } from "next/router";
-
+import Link from "next/link";
+import useCheckSignedHaveIn from "../hooks/useCheckHaveSignedIn";
 const formSchema = Yup.object({
 	email: Yup.string().required().email(),
 	username: Yup.string().required().max(20),
@@ -17,6 +18,14 @@ interface signinProps {}
 const signup: React.FC<signinProps> = ({}) => {
 	const router = useRouter();
 
+	useEffect(() => {
+		const [email] = useCheckSignedHaveIn();
+		if (email) {
+			router.push("/");
+		}
+	}, []);
+
+	console.log("gotta fix the box shadow also signin on register");
 	return (
 		<div className={styles.container}>
 			<div className={styles.outerParent}>
@@ -68,14 +77,23 @@ const signup: React.FC<signinProps> = ({}) => {
 										// placeholder={"password"}
 									/>
 								</div>
-								<button>
-									<a>
-										<span></span>
-										<span></span>
-										<span></span>
-										<span></span>Submit
-									</a>
-								</button>
+
+								<div className={styles.divider}>
+									<button>
+										<a>
+											<span></span>
+											<span></span>
+											<span></span>
+											<span></span>Submit
+										</a>
+									</button>
+
+									<button>
+										<Link href="signin">
+											<a>Login</a>
+										</Link>
+									</button>
+								</div>
 							</form>
 						);
 					}}

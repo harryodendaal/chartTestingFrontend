@@ -1,10 +1,12 @@
-import React from "react";
-import styles from "../styles/signin.module.scss";
+import React, { useEffect } from "react";
+import styles from "../styles/form/form.module.scss";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import TextInput from "../components/TextInput/TextInput";
-import axiosInstance from "../api/api";
+import axiosInstance from "../api/axios";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import useCheckSignedHaveIn from "../hooks/useCheckHaveSignedIn";
 
 const formSchema = Yup.object({
 	email: Yup.string().required().email(),
@@ -14,6 +16,13 @@ const formSchema = Yup.object({
 interface signinProps {}
 
 const signin: React.FC<signinProps> = ({}) => {
+	useEffect(() => {
+		const [email] = useCheckSignedHaveIn();
+		if (email) {
+			router.push("/");
+		}
+	}, []);
+
 	const router = useRouter();
 	return (
 		<div className={styles.container}>
@@ -63,14 +72,21 @@ const signin: React.FC<signinProps> = ({}) => {
 										// placeholder={"password"}
 									/>
 								</div>
-								<button type="submit">
-									<a>
-										<span></span>
-										<span></span>
-										<span></span>
-										<span></span>Submit
-									</a>
-								</button>
+								<div className={styles.divider}>
+									<button type="submit">
+										<a>
+											<span></span>
+											<span></span>
+											<span></span>
+											<span></span>Submit
+										</a>
+									</button>
+									<button>
+										<Link href="signup">
+											<a>Register</a>
+										</Link>
+									</button>
+								</div>
 							</form>
 						);
 					}}

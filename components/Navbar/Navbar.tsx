@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Navbar.module.css";
+import styles from "./Navbar.module.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { SidebarData } from "./NavbarData";
 import { IconContext } from "react-icons";
 import { useRouter } from "next/router";
 import useCheckSignedHaveIn from "../../hooks/useCheckHaveSignedIn";
-import axiosInstance from "../../api/api";
+import axiosInstance from "../../api/axios";
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 							);
 						})}
 						<li className={styles.nav_text}>
-							<a>
+							<a onClick={logout} className={styles.special}>
 								<span>LOGOUT</span>
 							</a>
 						</li>

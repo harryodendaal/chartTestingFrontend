@@ -5,13 +5,23 @@ import { useField } from "formik";
 type TextInputProps = InputHTMLAttributes<HTMLInputElement> & {
 	name: string;
 	label?: string;
+	textarea?: boolean;
 };
 
-const TextInput: React.FC<TextInputProps> = ({ name, label, ...props }) => {
+const TextInput: React.FC<TextInputProps> = ({
+	name,
+	label,
+	textarea = false,
+	...props
+}) => {
 	const [field, meta] = useField(name);
 	return (
 		<div>
-			<input required className={styles.input} {...field} {...props} />
+			{textarea ? (
+				<textarea required className={styles.input} {...field} />
+			) : (
+				<input required className={styles.input} {...field} {...props} />
+			)}
 			{meta.error && meta.touched && (
 				<p className={styles.error}>{meta.error}</p>
 			)}

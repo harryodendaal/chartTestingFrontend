@@ -4,6 +4,9 @@
 	display: flex;
 	justify-content: start;
 	align-items: center;
+	top: 0;
+	width: 100%;
+	position: fixed;
 }
 .navbar h3 {
 	color: white;
@@ -65,10 +68,11 @@
 .nav_text a:hover {
 	background-color: #1a83ff;
 }
-
-.nav_menu_items :last-child {
-	margin-top: auto;
+.nav_text .special:hover {
+	background-color: #cc1250;
+	cursor: pointer;
 }
+
 .navbar_toggle {
 	background-color: #060b26;
 	width: 100%;
