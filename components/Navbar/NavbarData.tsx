@@ -1,8 +1,7 @@
 import React from "react";
-import { FaCartPlus, FaEnvelopeOpenText } from "react-icons/fa";
-import { AiFillHome } from "react-icons/ai";
-import { IoIosPaper, IoMdPeople, IoMdHelpCircle } from "react-icons/io";
-
+import { FaCartPlus, FaMoneyBillWave } from "react-icons/fa";
+import { AiFillHome, AiOutlineExperiment } from "react-icons/ai";
+import { IoIosPaper, IoMdHelpCircle } from "react-icons/io";
 export const SidebarData = [
 	{
 		title: "Home",
@@ -20,14 +19,14 @@ export const SidebarData = [
 		icon: <FaCartPlus />,
 	},
 	{
-		title: "Team",
-		path: "/",
-		icon: <IoMdPeople />,
+		title: "subscribe",
+		path: "/subscribe",
+		icon: <FaMoneyBillWave style={{ fontSize: "30px" }} />,
 	},
 	{
-		title: "Messages",
-		path: "/",
-		icon: <FaEnvelopeOpenText />,
+		title: "testing",
+		path: "/testing",
+		icon: <AiOutlineExperiment />,
 	},
 	{
 		title: "Support",
