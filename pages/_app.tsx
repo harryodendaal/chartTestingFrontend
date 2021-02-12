@@ -1,8 +1,16 @@
 import "../styles/global.scss";
 import type { AppProps /*, AppContext */ } from "next/app";
+import { QueryClientProvider, QueryClient } from "react-query";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />;
+	const queryClient = new QueryClient();
+
+	return (
+		<QueryClientProvider client={queryClient}>
+			<Component {...pageProps} />
+		</QueryClientProvider>
+	);
 }
 
 // Only uncomment this method if you have blocking data requirements for

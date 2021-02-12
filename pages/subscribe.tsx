@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components/Navbar/Navbar";
+import { Navbar } from "../components";
 import styles from "../styles/pages/subscribe.module.scss";
 interface subscribeProps {}
 

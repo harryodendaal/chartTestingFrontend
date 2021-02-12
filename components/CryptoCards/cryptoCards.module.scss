@@ -1,0 +1,69 @@
+@import "../../styles/common.scss";
+
+@mixin displayCenter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.container_error {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 90vh;
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+}
+.cards_container {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+
+	.card {
+		width: 200px;
+		height: 100px;
+		background: aliceblue;
+		border-radius: 10px;
+		margin: auto;
+		box-shadow: $box-shadow-one;
+
+		&:hover {
+			box-shadow: $box-shadow-two;
+			cursor: pointer;
+		}
+		.card_content {
+			@include displayCenter();
+			color: #ffffff;
+			padding: 10px 0;
+
+			h3 {
+				font-size: 1.5rem;
+				color: white;
+			}
+			.card_btn {
+				background: $button-bg-one;
+				color: #ffffff;
+				padding: 10px 25px;
+				text-decoration: none;
+				margin-top: 25px;
+				border-radius: 5px;
+				box-shadow: $box-shadow-two;
+
+				&:hover {
+					background: $button-bg-two;
+				}
+			}
+		}
+
+		.card_background {
+			background: $bg-crypto-cards;
+			border-radius: 10px;
+		}
+	}
+}

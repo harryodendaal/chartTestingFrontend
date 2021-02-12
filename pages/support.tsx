@@ -2,10 +2,10 @@ import React from "react";
 import styles from "../styles/form/form.module.scss";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import TextInput from "../components/TextInput/TextInput";
 import axiosInstance from "../api/axios";
 import { useRouter } from "next/router";
-import { Navbar } from "../components/Navbar/Navbar";
+import { Navbar } from "../components";
+import TextInput from "../components/TextInput/TextInput";
 
 const formSchema = Yup.object({
 	// name: Yup.string().required().email(),

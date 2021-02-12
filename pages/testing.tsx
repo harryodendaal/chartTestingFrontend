@@ -1,16 +1,17 @@
 import React from "react";
-import { Navbar } from "../components/Navbar/Navbar";
-
+import { CryptoCards, Navbar, TestingForm } from "../components";
+import styles from "../styles/pages/testing.module.scss";
 interface testingProps {}
 
 const testing: React.FC<testingProps> = ({}) => {
 	return (
 		<>
 			<Navbar />
-			<h1 style={{ marginTop: "80px" }}>
-				first we will get the crytpos and show them. Then make them clickable
-				and show chart infor
-			</h1>
+
+			<div className={styles.container} style={{ marginTop: "80px" }}>
+				<CryptoCards />
+				<TestingForm />
+			</div>
 		</>
 	);
 };

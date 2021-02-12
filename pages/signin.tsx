@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import styles from "../styles/form/form.module.scss";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import TextInput from "../components/TextInput/TextInput";
+
 import axiosInstance from "../api/axios";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import useCheckSignedHaveIn from "../hooks/useCheckHaveSignedIn";
+import TextInput from "../components/TextInput/TextInput";
 
 const formSchema = Yup.object({
 	email: Yup.string().required().email(),

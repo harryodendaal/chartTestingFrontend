@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../components/Navbar/Navbar";
+import { Navbar } from "../components";
 interface indexProps {}
 
 const index: React.FC<indexProps> = ({}) => {
