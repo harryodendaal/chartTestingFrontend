@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "../components";
 import styles from "../styles/pages/subscribe.module.scss";
 interface subscribeProps {}
 
 const subscribe: React.FC<subscribeProps> = ({}) => {
+	const [sideBarPressed, setSideBarPressed] = useState(false)
+
 	return (
 		<>
-			<Navbar />
+			<Navbar setSideBarPressed={setSideBarPressed} sideBarPressed={sideBarPressed}/>
 			<div className={styles.container} style={{ marginTop: "80px" }}>
-				<div className={styles.cards_container}>
+				<div className={styles.cards_container} style={{ paddingLeft: sideBarPressed ? '250px' : '0px' }}>
 					{/* 1st class */}
 					<div className={styles.card}>
 						<div className={styles.first_card}>

@@ -3,13 +3,15 @@ import { useQuery } from "react-query";
 import { getAllCryptos } from "../../api/api";
 import styles from "./cryptoCards.module.scss";
 import Loader from "react-loader-spinner";
-interface CryptoCardsProps {}
+interface CryptoCardsProps {
+	sideBarPressed?:boolean
+}
 interface cryptos {
 	crypto: string;
 	created_at: string;
 	id: number;
 }
-export const CryptoCards: React.FC<CryptoCardsProps> = ({}) => {
+export const CryptoCards: React.FC<CryptoCardsProps> = ({sideBarPressed}) => {
 	const { data, error, isLoading, isError } = useQuery<cryptos[], Error>(
 		"cryptos",
 		getAllCryptos
@@ -32,7 +34,7 @@ export const CryptoCards: React.FC<CryptoCardsProps> = ({}) => {
 	return (
 		<>
 			<div className={styles.container}>
-				<div className={styles.cards_container}>
+				<div style={{ paddingLeft: sideBarPressed ? '160px' : '0px'}} className={styles.cards_container}>
 					{data?.map(({ crypto, id }) => (
 						<div className={styles.card} key={id}>
 							<div className={styles.card_background}>

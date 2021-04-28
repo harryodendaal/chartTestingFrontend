@@ -1,6 +1,7 @@
 import axiosInstance from "./axios";
 
-export const getAllCryptos = async (key) => {
+//key was a param
+export const getAllCryptos = async () => {
 	const response = await axiosInstance.get("main/cryptos/");
 
 	console.log("this is the response", response);

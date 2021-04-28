@@ -1,4 +1,6 @@
 @import "../../styles/common.scss";
+@import "../../styles/breakpoint.scss";
+
 
 @mixin displayCenter {
 	display: flex;
@@ -18,11 +20,12 @@
 .container {
 	display: flex;
 	flex-direction: row;
+	
 }
 .cards_container {
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
 
 	.card {
@@ -66,4 +69,29 @@
 			border-radius: 10px;
 		}
 	}
+
+	@include media ('>phone', '<=tablet') {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+		@include media ('>tablet', '<=desktop') {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include media ('>desktop', '<=LGdesktop') {
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+	}
 }
+// @media only screen and (min-width: 1200px) {
+// 		display: grid;
+// 		grid-template-columns: repeat(2, 1fr);	
+// 	}
+// 	@media only screen and (min-width: 900px) {
+// 		display: grid;
+// 		grid-template-columns: repeat(3, 1fr);
+// 	}
+// 	@media only screen and (min-width: 600px) {
+// 		display: grid;
+// 		grid-template-columns: repeat(4, 1fr);
+// 	}

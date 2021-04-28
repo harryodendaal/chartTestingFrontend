@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { CryptoCards, Navbar, TestingForm } from "../components";
 import styles from "../styles/pages/testing.module.scss";
 interface testingProps {}
 
 const testing: React.FC<testingProps> = ({}) => {
+	const [sideBarPressed, setSideBarPressed] = useState(false)
 	return (
 		<>
-			<Navbar />
+			<Navbar setSideBarPressed={setSideBarPressed} sideBarPressed={sideBarPressed}/>
 
-			<div className={styles.container} style={{ marginTop: "80px" }}>
-				<CryptoCards />
+			<div className={styles.container} style={{ marginTop: "100px"}}>
+				<CryptoCards sideBarPressed={sideBarPressed} />
 				<TestingForm />
 			</div>
 		</>

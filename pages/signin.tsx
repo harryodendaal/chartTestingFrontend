@@ -35,14 +35,13 @@ const signin: React.FC<signinProps> = ({}) => {
 					}}
 					validationSchema={formSchema}
 					onSubmit={(data) => {
-						console.log(data);
-
 						axiosInstance
 							.post("token/", {
 								email: data.email,
 								password: data.password,
 							})
 							.then((res) => {
+								console.log(res)
 								localStorage.setItem("access_token", res.data.access);
 								localStorage.setItem("refresh_token", res.data.refresh);
 								axiosInstance.defaults.headers["Authorization"] =
@@ -51,7 +50,9 @@ const signin: React.FC<signinProps> = ({}) => {
 								// set user email in localstorage aswell
 								localStorage.setItem("user", data.email);
 								router.push("/");
-							});
+							}).catch((e) => {
+								alert(e)
+							})
 					}}
 				>
 					{({ handleSubmit }) => {

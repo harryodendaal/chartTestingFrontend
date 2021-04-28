@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
 	async function (error) {
 		const originalRequest = error.config;
 
-		console.log(error);
+		console.log('the error in response interceptor is: ', error);
 		if (typeof error.response === "undefined") {
 			alert(
 				"A server/network error occurred. " +
@@ -62,12 +62,12 @@ axiosInstance.interceptors.response.use(
 			const refreshToken = localStorage.getItem("refresh_token");
 
 			if (refreshToken) {
+				console.log('refresh', refreshToken)
 				const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
-
+				console.log('tokenparts')
 				// exp date in token is expressed in seconds, while now() returns milliseconds:
 				const now = Math.ceil(Date.now() / 1000);
 				console.log(tokenParts.exp);
-
 				if (tokenParts.exp > now) {
 					return axiosInstance
 						.post("/token/refresh/", { refresh: refreshToken })
@@ -94,13 +94,25 @@ axiosInstance.interceptors.response.use(
 					//
 					window.location.href = "/signin/";
 				}
+				if(refreshToken === undefined) {
+					console.log("Refresh token is undefined");
+					// adding remove tokens and user
+					localStorage.removeItem("user");
+					localStorage.removeItem("refresh_token");
+					localStorage.removeItem("access_token");
+				}
 			} else {
+
 				console.log("Refresh token not available.");
 				window.location.href = "/signin/";
 			}
 		}
 
+				console.log('5')
 		// specific error handling done elsewhere
+		if (window.location.href == "/signin/" && 	error.response.status === 401) {
+			alert('Incorrect password or email')
+		}
 		return Promise.reject(error);
 	}
 );

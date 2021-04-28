@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./Navbar.module.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,14 +7,22 @@ import { IconContext } from "react-icons";
 import { useRouter } from "next/router";
 import useCheckSignedHaveIn from "../../hooks/useCheckHaveSignedIn";
 import axiosInstance from "../../api/axios";
-interface NavbarProps {}
+interface NavbarProps {
+	sideBarPressed?:boolean
+	setSideBarPressed?:Dispatch<SetStateAction<boolean>>
+}
 
-export const Navbar: React.FC<NavbarProps> = ({}) => {
+export const Navbar: React.FC<NavbarProps> = ({sideBarPressed, setSideBarPressed}) => {
+
 	const [sidebar, setSidebar] = useState(false);
 	const router = useRouter();
 	const [email, setEmail] = useState<string | null>();
 
 	const showSidebar = () => {
+		if (sideBarPressed!==undefined && setSideBarPressed!==undefined) {
+			setSideBarPressed(!sideBarPressed)
+		}
+
 		setSidebar(!sidebar);
 	};
 
